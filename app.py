@@ -74,6 +74,8 @@ if menu == "Inventario":
         if row["stock_actual"] <= row["stock_minimo"]:
             st.warning(f"{row['nombre']} STOCK BAJO")
 
+    df = df.drop(columns=["id"])
+
     st.dataframe(df)
 
 elif menu == "Registrar venta":
@@ -153,6 +155,7 @@ elif menu == "Historial":
 
     if "created_at" in df.columns:
         df["created_at"] = pd.to_datetime(df["created_at"]).dt.date
+
 
     st.dataframe(df)
 
